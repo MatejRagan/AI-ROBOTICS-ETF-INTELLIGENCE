@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Robotics ETF Strategy: Bottlenecks, Power & Geopolitics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+            color: #0F172A;
+        }
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 310px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .plotly-container {
+            position: relative;
+            width: 100%;
+            height: 360px;
+            max-height: 420px;
+        }
+        .card-elevated {
+            background-color: #FFFFFF;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+            border: 1px solid #E2E8F0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card-elevated:hover {
+            box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -4px rgba(15, 23, 42, 0.05);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-blue-600 selection:text-white">
+
+    <nav class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md text-white border-b border-slate-800 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-14">
+                <div class="flex items-center space-x-2">
+                    <span class="inline-block w-3 h-3 rounded-full bg-cyan-400"></span>
+                    <span class="font-bold tracking-tight text-sm sm:text-base">AI & ROBOTICS <span class="text-cyan-400 font-normal">ETF INTELLIGENCE</span></span>
+                </div>
+                <div class="hidden md:flex space-x-6 text-xs font-semibold uppercase tracking-wider text-slate-300">
+                    <a href="#etf-landscape" class="hover:text-cyan-400 transition">1. ETF Vehicles</a>
+                    <a href="#supply-chain" class="hover:text-cyan-400 transition">2. Silicon Limits</a>
+                    <a href="#energy-crisis" class="hover:text-cyan-400 transition">3. Power Grid</a>
+                    <a href="#capex-paradox" class="hover:text-cyan-400 transition">4. Capex Gap</a>
+                    <a href="#regulation-tax" class="hover:text-cyan-400 transition">5. Rules & Tax</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white py-14 sm:py-20 border-b-4 border-cyan-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl">
+                <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 mb-5">
+                    STRATEGIC ALLOCATION BRIEFING • INFRASTRUCTURE & GEOPOLITICS
+                </div>
+                <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight mb-6">
+                    Navigating the Hard Physical Limits of the <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-amber-400">AI & Robotics Supercycle</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
+                    Generative AI has shifted from asset-light software scaling to a capital-intensive heavy industrial buildout. True risk-adjusted returns in thematic ETFs depend on how underlying holdings overcome semiconductor packaging bottlenecks, electrical grid saturation, a $600B monetization gap, and tightening regulatory moats.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+                <div class="bg-slate-800/70 border border-slate-700 rounded-xl p-5 backdrop-blur-sm">
+                    <div class="text-cyan-400 text-xs font-bold uppercase tracking-wider mb-1">Packaging Chokepoint</div>
+                    <div class="text-3xl font-extrabold text-white mono">52–78 Wks</div>
+                    <div class="text-xs text-slate-400 mt-1">TSMC CoWoS lead times dictating global AI chip delivery</div>
+                </div>
+                <div class="bg-slate-800/70 border border-slate-700 rounded-xl p-5 backdrop-blur-sm">
+                    <div class="text-amber-400 text-xs font-bold uppercase tracking-wider mb-1">Data Center Power</div>
+                    <div class="text-3xl font-extrabold text-white mono">945 TWh</div>
+                    <div class="text-xs text-slate-400 mt-1">Projected global demand by 2030 (+128% vs 2024)</div>
+                </div>
+                <div class="bg-slate-800/70 border border-slate-700 rounded-xl p-5 backdrop-blur-sm">
+                    <div class="text-rose-400 text-xs font-bold uppercase tracking-wider mb-1">The Capex Paradox</div>
+                    <div class="text-3xl font-extrabold text-white mono">$600B</div>
+                    <div class="text-xs text-slate-400 mt-1">Annual AI software revenue gap needed to justify infra spend</div>
+                </div>
+                <div class="bg-slate-800/70 border border-slate-700 rounded-xl p-5 backdrop-blur-sm">
+                    <div class="text-emerald-400 text-xs font-bold uppercase tracking-wider mb-1">Tax Shield (SK/EU)</div>
+                    <div class="text-3xl font-extrabold text-white mono">0% / 15%</div>
+                    <div class="text-xs text-slate-400 mt-1">SK capital gains (>1 yr) & Irish UCITS US dividend WHT</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
+
+        <section id="etf-landscape" class="scroll-mt-20">
+            <div class="border-l-4 border-blue-600 pl-4 mb-6">
+                <span class="text-xs font-bold uppercase tracking-widest text-blue-600">Section 01 • Vehicle Selection</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">The Thematic ETF Spectrum: Concentration vs. Diversification</h2>
+            </div>
+            <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-4xl mb-8">
+                European UCITS ETFs targeting artificial intelligence and robotics fall into two distinct structural camps: mega-cap US technology funds concentrated in hyperscalers and chipmakers, and globally diversified industrial automation vehicles. Selecting an ETF requires trading off exposure to frontier compute power against single-country and single-sector concentration risk.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="card-elevated p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-lg font-bold text-slate-900">Top European UCITS AI & Robotics ETFs</h3>
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-blue-100 text-blue-800">AUM & Fee Comparison</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">
+                            <strong>Xtrackers AI & Big Data (IE00BGV5VN51)</strong> dominates European assets (~€8.0B) with a low 0.35% TER, but allocates over 83% to the US. In contrast, <strong>L&G ROBO Global</strong> diversifies across Asia and Europe at a steeper 0.80% annual fee.
+                        </p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="etfAumTerChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card-elevated p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-lg font-bold text-slate-900">Portfolio Concentration & Geographic Risk</h3>
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-cyan-100 text-cyan-800">Structural Exposure</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">
+                            Pure-play AI funds exhibit heavy top-10 concentration (nearly 45% in Xtrackers across Microsoft, Apple, Meta, Nvidia, and AMD), creating acute sensitivity to US hyperscaler capital expenditure cycles compared to robotics-blended funds.
+                        </p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="etfConcentrationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-elevated p-6 mt-8 overflow-x-auto">
+                <h4 class="text-base font-bold text-slate-900 mb-3">Execution Friction: European Brokerage Cost Matrix (DCA & FX)</h4>
+                <p class="text-sm text-slate-600 mb-4">
+                    Hidden foreign exchange mark-ups on USD-denominated underlying equities can erode low ETF expense ratios. Utilizing zero-commission savings plans with tight FX spreads preserves compounding.
+                </p>
+                <table class="min-w-full text-left text-sm border-collapse">
+                    <thead>
+                        <tr class="border-b-2 border-slate-200 bg-slate-50 text-slate-700 uppercase text-xs">
+                            <th class="py-3 px-4 font-bold">Brokerage Platform</th>
+                            <th class="py-3 px-4 font-bold">ETF Savings-Plan Fee</th>
+                            <th class="py-3 px-4 font-bold">One-Off Purchase Fee</th>
+                            <th class="py-3 px-4 font-bold">FX Mark-Up ($2,000 Equiv.)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200">
+                        <tr class="hover:bg-blue-50/40">
+                            <td class="py-3 px-4 font-semibold text-slate-900">Trading 212</td>
+                            <td class="py-3 px-4 text-emerald-600 font-semibold">€0.00</td>
+                            <td class="py-3 px-4 text-emerald-600 font-semibold">€0.00</td>
+                            <td class="py-3 px-4 mono text-slate-700">0.15% avg (~$3.00)</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50/40">
+                            <td class="py-3 px-4 font-semibold text-slate-900">Trade Republic</td>
+                            <td class="py-3 px-4 text-emerald-600 font-semibold">€0.00</td>
+                            <td class="py-3 px-4 mono text-slate-700">€1.00 settlement</td>
+                            <td class="py-3 px-4 text-slate-600">Varies by currency</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50/40">
+                            <td class="py-3 px-4 font-semibold text-slate-900">XTB</td>
+                            <td class="py-3 px-4 text-emerald-600 font-semibold">€0.00 (&lt;€100k/mo)</td>
+                            <td class="py-3 px-4 text-emerald-600 font-semibold">0% (&lt;€100k/mo)</td>
+                            <td class="py-3 px-4 mono text-amber-700">0.50% (~$10.00)</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50/40">
+                            <td class="py-3 px-4 font-semibold text-slate-900">flatex</td>
+                            <td class="py-3 px-4 text-emerald-600 font-semibold">€0.00</td>
+                            <td class="py-3 px-4 mono text-slate-700">€5.90 flat + exchange</td>
+                            <td class="py-3 px-4 mono text-amber-700">0.40% (~$12.00)</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50/40">
+                            <td class="py-3 px-4 font-semibold text-slate-900">Comdirect</td>
+                            <td class="py-3 px-4 text-slate-700">€0.00 (select ETFs)</td>
+                            <td class="py-3 px-4 mono text-rose-700">0.25% + €4.90 (min €9.90)</td>
+                            <td class="py-3 px-4 mono text-rose-700">1.00% (~$20.00)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="supply-chain" class="scroll-mt-20">
+            <div class="border-l-4 border-cyan-500 pl-4 mb-6">
+                <span class="text-xs font-bold uppercase tracking-widest text-cyan-600">Section 02 • Semiconductor & Geopolitical Bottlenecks</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">Advanced Packaging, HBM Oligopolies & Resource Weaponization</h2>
+            </div>
+            <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-4xl mb-8">
+                AI chip deployment is capped not by theoretical logic design, but by physical back-end packaging capacity—specifically TSMC’s Chip-on-Wafer-on-Substrate (CoWoS) technology—and High-Bandwidth Memory (HBM) supply. Simultaneously, US cloud export restrictions and Chinese export bans on gallium, germanium, and antimony expose the entire hardware chain to sudden geopolitical shocks.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="card-elevated p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-lg font-bold text-slate-900">Global CoWoS Packaging Demand Surge</h3>
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-amber-100 text-amber-800">Sold Out Through 2026</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">
+                            Annual CoWoS wafer demand is surging from ~370k in 2024 to nearly <strong>1,000,000 wafers in 2026</strong>. Nvidia alone has pre-booked over 50% of TSMC's expansion ($105B in supply obligations), driving 10%–20% packaging price hikes.
+                        </p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="cowosDemandChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card-elevated p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-lg font-bold text-slate-900">High-Bandwidth Memory (HBM) Market Share</h3>
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-blue-100 text-blue-800">3-Firm Oligopoly</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">
+                            SK Hynix commands <strong>50% of HBM revenue</strong> via tight HBM4 integration with Nvidia. Because HBM consumes far more wafer area than standard memory, conventional DRAM supply growth is squeezed to just 16% in 2026, inflating hardware costs industry-wide.
+                        </p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="hbmShareChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-elevated p-6 mt-8">
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Geopolitical Chokepoints & Foundry Lithography Divergence</h3>
+                <p class="text-sm text-slate-600 mb-6">
+                    From raw critical minerals in China to Dutch lithography monopolies and Taiwanese packaging, AI silicon traverses a fragile cross-border pipeline. Meanwhile, leading foundries have split on adopting ASML's $350M+ High-NA EUV machines.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-stretch mb-8">
+                    <div class="bg-rose-50 border-2 border-rose-200 rounded-xl p-4 relative">
+                        <div class="text-xs font-extrabold uppercase text-rose-700 mb-1">Stage 1 • Raw Inputs</div>
+                        <div class="font-bold text-slate-900 text-base mb-2">China Mineral Controls</div>
+                        <p class="text-xs text-slate-700 leading-relaxed">
+                            Export restrictions on <strong>Gallium, Germanium & Antimony</strong> threaten global substrate, power electronics, and fiber-optic manufacturing.
+                        </p>
+                        <div class="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 z-10 bg-slate-900 text-white w-6 h-6 rounded-full text-center leading-6 text-xs font-bold">→</div>
+                    </div>
+
+                    <div class="bg-blue-50 border-2 border-blue-200 rounded-xl p-4 relative">
+                        <div class="text-xs font-extrabold uppercase text-blue-700 mb-1">Stage 2 • Lithography</div>
+                        <div class="font-bold text-slate-900 text-base mb-2">ASML EUV Monopoly</div>
+                        <p class="text-xs text-slate-700 leading-relaxed">
+                            <strong>Intel</strong> deployed High-NA EUV at 18A/14A (2026) to reclaim leadership; <strong>TSMC & Samsung</strong> defer High-NA until ~2030 to protect margins.
+                        </p>
+                        <div class="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 z-10 bg-slate-900 text-white w-6 h-6 rounded-full text-center leading-6 text-xs font-bold">→</div>
+                    </div>
+
+                    <div class="bg-amber-50 border-2 border-amber-200 rounded-xl p-4 relative">
+                        <div class="text-xs font-extrabold uppercase text-amber-700 mb-1">Stage 3 • Integration</div>
+                        <div class="font-bold text-slate-900 text-base mb-2">Taiwan & Korea Bottleneck</div>
+                        <p class="text-xs text-slate-700 leading-relaxed">
+                            TSMC <strong>CoWoS</strong> (52–78 wk lead times) + South Korean <strong>HBM4</strong> stacks (+70% price premium over HBM3E) govern total GPU output.
+                        </p>
+                        <div class="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 z-10 bg-slate-900 text-white w-6 h-6 rounded-full text-center leading-6 text-xs font-bold">→</div>
+                    </div>
+
+                    <div class="bg-slate-100 border-2 border-slate-300 rounded-xl p-4">
+                        <div class="text-xs font-extrabold uppercase text-slate-700 mb-1">Stage 4 • Compute Access</div>
+                        <div class="font-bold text-slate-900 text-base mb-2">US BIS Cloud Controls</div>
+                        <p class="text-xs text-slate-700 leading-relaxed">
+                            US export controls expand beyond physical chips to restrict foreign access to advanced AI training clusters via US cloud providers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="energy-crisis" class="scroll-mt-20">
+            <div class="border-l-4 border-amber-500 pl-4 mb-6">
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-600">Section 03 • Electrical Grid & Infrastructure</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">The "Speed-to-Power" Crisis & Behind-the-Meter Generation</h2>
+            </div>
+            <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-4xl mb-8">
+                Modern AI server racks draw up to <strong>120 kW</strong>—more than ten times legacy 5–10 kW racks. After decades of flat electricity growth, US and European grids face severe transmission backlogs, forcing hyperscalers to abandon traditional utility timelines in favor of "Bring Your Own Power" (BYOP) nuclear, geothermal, and fuel cell solutions.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="card-elevated p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-lg font-bold text-slate-900">Data Center Electricity Surge (2024 vs. 2030)</h3>
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-amber-100 text-amber-800">IEA Projections (TWh)</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">
+                            Global data center power demand will more than double to <strong>945 TWh by 2030</strong>. The US faces a +240 TWh (+130%) surge, pushing per-capita data center power use above 1,200 kWh/year—roughly 10% of an average US household's total electricity.
+                        </p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="energyDemandChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card-elevated p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-lg font-bold text-slate-900">US Grid Interconnection Queue Crisis</h3>
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-rose-100 text-rose-800">Up to 7-Year Wait Times</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">
+                            In Texas (ERCOT), large-load requests hit <strong>466.5 GW</strong> (90.2% of the entire queue). In PJM (Northern Virginia), >70 GW of data center demand caused wholesale capacity costs to spike to $114.50/MWh, triggering regulatory pushback.
+                        </p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="gridQueueChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                <div class="card-elevated p-6 border-t-4 border-emerald-500">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">BYOP Pillar 1 • Geothermal</span>
+                        <span class="text-xl">🌋</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Enhanced Geothermal (EGS)</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        <strong>Fervo Energy</strong> applies horizontal shale-drilling tech to deliver 24/7 carbon-free firm power, backed by a landmark <strong>10.5 GW agreement with Microsoft</strong> and a 396 MW project with Google.
+                    </p>
+                </div>
+
+                <div class="card-elevated p-6 border-t-4 border-blue-600">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold uppercase tracking-wider text-blue-700">BYOP Pillar 2 • Nuclear</span>
+                        <span class="text-xl">⚛️</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Nuclear SMRs & Restarts</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Hyperscalers have committed to <strong>over 10 GW of nuclear capacity</strong>, funding Small Modular Reactors (SMRs) and signing exclusive PPAs to restart or monopolize legacy gigawatt fission plants.
+                    </p>
+                </div>
+
+                <div class="card-elevated p-6 border-t-4 border-amber-500">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold uppercase tracking-wider text-amber-700">BYOP Pillar 3 • Onsite Rapid</span>
+                        <span class="text-xl">⚡</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Solid Oxide Fuel Cells</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        <strong>Bloom Energy</strong> deploys modular fuel cells running on natural gas or hydrogen in months rather than years, bypassing multi-year high-voltage transformer and turbine backlogs.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="capex-paradox" class="scroll-mt-20">
+            <div class="border-l-4 border-rose-600 pl-4 mb-6">
+                <span class="text-xs font-bold uppercase tracking-widest text-rose-600">Section 04 • Financial Sustainability & Credit Risk</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">The $600B Revenue Gap & Private Credit Bridge</h2>
+            </div>
+            <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-4xl mb-8">
+                Global AI capital expenditure is projected to surpass <strong>$1 trillion annually by 2026</strong> ($1.8T cumulative), yet only <strong>26% of enterprises</strong> have successfully moved generative AI pilots into profit-generating production. To bridge this massive ROI gap without exhausting corporate balance sheets, hyperscalers are turning to an $800 billion private credit and Asset-Backed Securities (ABS) boom.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="card-elevated p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-lg font-bold text-slate-900">Infrastructure Spend vs. Monetization Reality</h3>
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-rose-100 text-rose-800">Sequoia & Goldman Data</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">
+                            To earn healthy margins on $1T+ annual hardware and data center capex, the software layer must generate <strong>$600B/year</strong>. Currently, 74% of piloting firms remain trapped in the "valley of death" due to 4x–7x hidden deployment costs.
+                        </p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="capexGapChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card-elevated p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-lg font-bold text-slate-900">Data Center Financing Bridge & Spread Risk</h3>
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-slate-100 text-slate-800">WebGL Credit Comparison</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">
+                            Morgan Stanley forecasts <strong>$800B in private credit</strong> and $150B in ABS/CMBS through 2028. AA-rated data center ABS trades at 155–175 bps over benchmarks (vs. 45–70 bps for unsecured tech bonds), transferring power-delay and lease-renewal risks to credit markets.
+                        </p>
+                    </div>
+                    <div id="plotlyCreditChart" class="plotly-container"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="regulation-tax" class="scroll-mt-20">
+            <div class="border-l-4 border-emerald-600 pl-4 mb-6">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-600">Section 05 • Governance, Moats & Tax Optimization</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">EU AI Act Compliance Moats & Jurisdictional Tax Alpha</h2>
+            </div>
+            <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-4xl mb-8">
+                While antitrust probes target Nvidia's CUDA lock-in and big-tech startup partnerships, the <strong>EU AI Act</strong> imposes fines of up to 7% of global turnover—paradoxically entrenching mega-cap incumbents who alone can afford compliance. For European and Slovak investors, pairing Irish-domiciled UCITS ETFs with a strict >1-year holding period unlocks decisive after-tax compounding.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-7 card-elevated p-6">
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">EU AI Act Enforcement Timeline & Competitive Impact</h3>
+                    <p class="text-sm text-slate-600 mb-6">
+                        Staggered obligations raise barriers to entry for smaller open-source rivals while solidifying the regulatory moat around mega-cap ETF constituents.
+                    </p>
+                    <div class="relative border-l-2 border-blue-600 ml-3 space-y-6 pb-2">
+                        <div class="relative pl-6">
+                            <span class="absolute -left-2.5 top-1 w-4 h-4 rounded-full bg-slate-400 border-2 border-white"></span>
+                            <div class="text-xs font-bold uppercase text-slate-500 mono">August 2024 • Completed</div>
+                            <div class="font-bold text-slate-900 text-sm">Entry Into Force</div>
+                            <p class="text-xs text-slate-600 mt-0.5">Establishes baseline risk-tier classification across all providers and deployers.</p>
+                        </div>
+                        <div class="relative pl-6">
+                            <span class="absolute -left-2.5 top-1 w-4 h-4 rounded-full bg-slate-400 border-2 border-white"></span>
+                            <div class="text-xs font-bold uppercase text-slate-500 mono">February 2025 • Completed</div>
+                            <div class="font-bold text-slate-900 text-sm">Prohibited AI Practices Banned</div>
+                            <p class="text-xs text-slate-600 mt-0.5">Outlaws social scoring, subliminal manipulation, and workplace emotion recognition.</p>
+                        </div>
+                        <div class="relative pl-6">
+                            <span class="absolute -left-2.5 top-1 w-4 h-4 rounded-full bg-slate-400 border-2 border-white"></span>
+                            <div class="text-xs font-bold uppercase text-slate-500 mono">August 2025 • Active</div>
+                            <div class="font-bold text-slate-900 text-sm">General-Purpose AI (GPAI) Governance</div>
+                            <p class="text-xs text-slate-600 mt-0.5">Mandates copyright compliance, training data summaries, and systemic-risk adversarial testing.</p>
+                        </div>
+                        <div class="relative pl-6">
+                            <span class="absolute -left-2.5 top-1 w-4 h-4 rounded-full bg-blue-600 border-2 border-white ring-4 ring-blue-100"></span>
+                            <div class="text-xs font-bold uppercase text-blue-600 mono">August 2026 • Current Phase</div>
+                            <div class="font-bold text-slate-900 text-sm">General Application & Transparency (Art. 50)</div>
+                            <p class="text-xs text-slate-600 mt-0.5">Strict machine-readable watermarking of synthetic content and AI Office fine enforcement (up to 7% global turnover).</p>
+                        </div>
+                        <div class="relative pl-6">
+                            <span class="absolute -left-2.5 top-1 w-4 h-4 rounded-full bg-amber-500 border-2 border-white"></span>
+                            <div class="text-xs font-bold uppercase text-amber-600 mono">December 2027 • Upcoming</div>
+                            <div class="font-bold text-slate-900 text-sm">High-Risk Systems (Annex III)</div>
+                            <p class="text-xs text-slate-600 mt-0.5">Full conformity assessments required for AI in critical infrastructure, employment, and law enforcement.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 card-elevated p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-lg font-bold text-slate-900">Tax Drag: Domicile & Holding Period</h3>
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800">Slovak / EU Rules</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">
+                            <strong>1) Fund Domicile:</strong> Irish UCITS ETFs cut US dividend withholding tax from 30% (Luxembourg) to 15%, saving ~0.15–0.20%/yr.<br>
+                            <strong>2) Slovak Time Test (§ 9):</strong> Holding regulated ETFs for <strong>&gt;1 full year</strong> eliminates 19%–35% income tax and the uncapped 16% health levy.
+                        </p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="taxComparisonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-slate-900 text-white rounded-2xl p-8 sm:p-10 shadow-xl border border-slate-800">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <span class="w-3 h-3 rounded-full bg-cyan-400 mr-3"></span>
+                Actionable Portfolio Blueprint for AI & Robotics Investors
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700">
+                    <div class="text-cyan-400 font-bold text-sm mb-2">01. Core-Satellite Allocation</div>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Anchor with a low-TER pure-play fund (e.g., Xtrackers AI & Big Data, 0.35%) for hyperscaler/chip exposure, paired with a robotics/automation ETF (e.g., iShares Automation & Robotics) to dilute US mega-cap concentration.
+                    </p>
+                </div>
+                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700">
+                    <div class="text-amber-400 font-bold text-sm mb-2">02. Monitor Physical Bottlenecks</div>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Track TSMC CoWoS capacity expansion, HBM4 pricing, and hyperscaler behind-the-meter power deals (nuclear/geothermal) as leading indicators of hardware delivery timelines.
+                    </p>
+                </div>
+                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700">
+                    <div class="text-rose-400 font-bold text-sm mb-2">03. Respect the Capex Gap</div>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Expect high annualized volatility (&gt;23%) as markets scrutinize whether enterprise AI software adoption closes the $600B revenue gap before private credit spreads widen.
+                    </p>
+                </div>
+                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700">
+                    <div class="text-emerald-400 font-bold text-sm mb-2">04. Enforce Tax Discipline</div>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Exclusively select <strong>Irish-domiciled (IE ISIN)</strong> UCITS ETFs on low-FX brokers, and strictly hold every tranche for <strong>more than 365 days</strong> to lock in 0% capital gains tax under Slovak law.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-950 text-slate-400 py-8 border-t border-slate-800 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div>Synthesized from Strategic Analysis of AI & Robotics Equities • Data current as of 2026</div>
+            <div>For informational & analytical purposes only. Not personalized financial advice.</div>
+        </div>
+    </footer>
+
+    <script>
+        function wrapLabel(str, maxLen = 16) {
+            if (typeof str !== 'string') return str;
+            if (str.length <= maxLen) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).trim().length <= maxLen) {
+                    currentLine = (currentLine + ' ' + word).trim();
+                } else {
+                    if (currentLine) lines.push(currentLine);
+                    currentLine = word;
+                }
+            }
+            if (currentLine) lines.push(currentLine);
+            return lines;
+        }
+
+        const sharedTooltipConfig = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        };
+
+        Chart.defaults.font.family = "'Inter', sans-serif";
+        Chart.defaults.color = '#475569';
+
+        const etfNamesRaw = [
+            'Xtrackers AI & Big Data 1C',
+            'iShares Automation & Robotics',
+            'L&G ROBO Global Robotics',
+            'WisdomTree Artificial Intelligence',
+            'Amundi MSCI Robotics & AI ESG'
+        ];
+        new Chart(document.getElementById('etfAumTerChart'), {
+            type: 'bar',
+            data: {
+                labels: etfNamesRaw.map(l => wrapLabel(l, 16)),
+                datasets: [
+                    {
+                        label: 'Assets Under Management (€ Millions)',
+                        data: [7974, 4898, 1442, 1180, 1159],
+                        backgroundColor: '#2563EB',
+                        borderRadius: 6,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: 'Total Expense Ratio (TER %)',
+                        data: [0.35, 0.40, 0.80, 0.40, 0.38],
+                        type: 'line',
+                        borderColor: '#F59E0B',
+                        backgroundColor: '#F59E0B',
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        yAxisID: 'y1'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: sharedTooltipConfig,
+                    legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } }
+                },
+                scales: {
+                    y: {
+                        type: 'linear',
+                        position: 'left',
+                        title: { display: true, text: 'AUM (€M)', font: { size: 11, weight: 'bold' } },
+                        grid: { color: '#E2E8F0' }
+                    },
+                    y1: {
+                        type: 'linear',
+                        position: 'right',
+                        min: 0,
+                        max: 1.0,
+                        title: { display: true, text: 'TER (%)', font: { size: 11, weight: 'bold' } },
+                        grid: { drawOnChartArea: false }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { font: { size: 10 } }
+                    }
+                }
+            }
+        });
+
+        const concLabelsRaw = [
+            'Xtrackers AI & Big Data',
+            'Amundi Robotics & AI',
+            'iShares Automation & Robotics',
+            'L&G ROBO Global Robotics'
+        ];
+        new Chart(document.getElementById('etfConcentrationChart'), {
+            type: 'bar',
+            data: {
+                labels: concLabelsRaw.map(l => wrapLabel(l, 16)),
+                datasets: [
+                    {
+                        label: 'US Geographic Weight (%)',
+                        data: [83, 77, 61, 45],
+                        backgroundColor: '#06B6D4',
+                        borderRadius: 4
+                    },
+                    {
+                        label: 'Top 10 Holdings Weight (%)',
+                        data: [45, 36, 28, 20],
+                        backgroundColor: '#0F172A',
+                        borderRadius: 4
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: sharedTooltipConfig,
+                    legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } }
+                },
+                scales: {
+                    x: {
+                        max: 100,
+                        title: { display: true, text: 'Portfolio Allocation (%)', font: { size: 11, weight: 'bold' } },
+                        grid: { color: '#E2E8F0' }
+                    },
+                    y: {
+                        grid: { display: false },
+                        ticks: { font: { size: 11 } }
+                    }
+                }
+            }
+        });
+
+        const cowosLabels = ['2024 Actual', '2025 Estimate', '2026 Projected Demand'];
+        new Chart(document.getElementById('cowosDemandChart'), {
+            type: 'line',
+            data: {
+                labels: cowosLabels.map(l => wrapLabel(l, 16)),
+                datasets: [{
+                    label: 'Annual CoWoS Demand (Thousands of Wafers)',
+                    data: [370, 670, 1000],
+                    borderColor: '#F59E0B',
+                    backgroundColor: 'rgba(245, 158, 11, 0.18)',
+                    fill: true,
+                    tension: 0.3,
+                    borderWidth: 3,
+                    pointRadius: 6,
+                    pointBackgroundColor: '#D97706'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: sharedTooltipConfig,
+                    legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Wafers (Thousands)', font: { size: 11, weight: 'bold' } },
+                        grid: { color: '#E2E8F0' }
+                    },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        const hbmLabels = [
+            'SK Hynix (HBM4 Leader)',
+            'Samsung Electronics',
+            'Micron Technology'
+        ];
+        new Chart(document.getElementById('hbmShareChart'), {
+            type: 'doughnut',
+            data: {
+                labels: hbmLabels.map(l => wrapLabel(l, 16)),
+                datasets: [{
+                    data: [50, 32, 18],
+                    backgroundColor: ['#2563EB', '#06B6D4', '#F59E0B'],
+                    borderWidth: 2,
+                    borderColor: '#FFFFFF'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '62%',
+                plugins: {
+                    tooltip: sharedTooltipConfig,
+                    legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } }
+                }
+            }
+        });
+
+        const energyLabels = [
+            'United States (+130%)',
+            'China (+170%)',
+            'Rest of World',
+            'Europe (+70%)'
+        ];
+        new Chart(document.getElementById('energyDemandChart'), {
+            type: 'bar',
+            data: {
+                labels: energyLabels.map(l => wrapLabel(l, 16)),
+                datasets: [
+                    {
+                        label: '2024 Consumption (TWh)',
+                        data: [185, 103, 63, 64],
+                        backgroundColor: '#94A3B8',
+                        borderRadius: 4
+                    },
+                    {
+                        label: '2030 Projected (TWh)',
+                        data: [425, 278, 133, 109],
+                        backgroundColor: '#F59E0B',
+                        borderRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: sharedTooltipConfig,
+                    legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } }
+                },
+                scales: {
+                    y: {
+                        title: { display: true, text: 'Terawatt-Hours (TWh)', font: { size: 11, weight: 'bold' } },
+                        grid: { color: '#E2E8F0' }
+                    },
+                    x: { grid: { display: false }, ticks: { font: { size: 11 } } }
+                }
+            }
+        });
+
+        const queueLabels = [
+            'ERCOT Texas Data Center Queue',
+            'ERCOT Other Queue Requests',
+            'PJM Interconnection Data Centers'
+        ];
+        new Chart(document.getElementById('gridQueueChart'), {
+            type: 'bar',
+            data: {
+                labels: queueLabels.map(l => wrapLabel(l, 16)),
+                datasets: [{
+                    label: 'Queued Capacity (Gigawatts)',
+                    data: [466.5, 50.7, 70.0],
+                    backgroundColor: ['#E11D48', '#CBD5E1', '#2563EB'],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: sharedTooltipConfig,
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        title: { display: true, text: 'Gigawatts (GW)', font: { size: 11, weight: 'bold' } },
+                        grid: { color: '#E2E8F0' }
+                    },
+                    x: { grid: { display: false }, ticks: { font: { size: 11 } } }
+                }
+            }
+        });
+
+        const capexLabels = [
+            'Cumulative AI Capex by 2026',
+            'Annual Global AI Capex (2026)',
+            'Required Annual AI Software Revenue',
+            'Current Enterprise Production Adoption (%)'
+        ];
+        new Chart(document.getElementById('capexGapChart'), {
+            type: 'bar',
+            data: {
+                labels: [
+                    wrapLabel('Cumulative AI Capex by 2026 ($B)', 16),
+                    wrapLabel('Annual AI Capex Run-Rate ($B)', 16),
+                    wrapLabel('Required Annual Software Rev ($B)', 16),
+                    wrapLabel('Current AI Revenue Gap ($B)', 16)
+                ],
+                datasets: [{
+                    label: 'USD Billions ($B)',
+                    data: [1800, 1000, 600, 550],
+                    backgroundColor: ['#0F172A', '#2563EB', '#06B6D4', '#E11D48'],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: sharedTooltipConfig,
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        title: { display: true, text: 'USD Billions ($B)', font: { size: 11, weight: 'bold' } },
+                        grid: { color: '#E2E8F0' }
+                    },
+                    x: { grid: { display: false }, ticks: { font: { size: 10 } } }
+                }
+            }
+        });
+
+        const plotlyData = [
+            {
+                x: ['Unsecured Tech Debt', 'AA Data Center ABS', 'Private Credit Infra'],
+                y: [58, 165, 325],
+                type: 'bar',
+                marker: {
+                    color: ['#06B6D4', '#2563EB', '#F59E0B']
+                },
+                text: ['45–70 bps', '155–175 bps', '~300–350 bps ($800B mkt)'],
+                textposition: 'auto',
+                hoverinfo: 'x+text'
+            }
+        ];
+        const plotlyLayout = {
+            title: {
+                text: 'Data Center Debt Spreads Over Benchmark (bps)',
+                font: { family: 'Inter, sans-serif', size: 13, color: '#0F172A' }
+            },
+            margin: { t: 40, r: 20, b: 50, l: 50 },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            yaxis: {
+                title: 'Basis Points (bps)',
+                gridcolor: '#E2E8F0',
+                font: { size: 11 }
+            },
+            xaxis: {
+                font: { size: 11 }
+            }
+        };
+        Plotly.newPlot('plotlyCreditChart', plotlyData, plotlyLayout, { responsive: true, displayModeBar: false });
+
+        const taxLabels = [
+            'US Dividend WHT (Luxembourg ETF)',
+            'US Dividend WHT (Irish UCITS ETF)',
+            'SK Short-Term Sale (<1 Yr Tax + Health)',
+            'SK Long-Term Sale (>1 Yr Regulated ETF)'
+        ];
+        new Chart(document.getElementById('taxComparisonChart'), {
+            type: 'bar',
+            data: {
+                labels: taxLabels.map(l => wrapLabel(l, 16)),
+                datasets: [{
+                    label: 'Effective Tax & Levy Rate (%)',
+                    data: [30, 15, 35, 0],
+                    backgroundColor: ['#E11D48', '#2563EB', '#F59E0B', '#10B981'],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: sharedTooltipConfig,
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        max: 45,
+                        title: { display: true, text: 'Statutory Rate (%)', font: { size: 11, weight: 'bold' } },
+                        grid: { color: '#E2E8F0' }
+                    },
+                    y: { grid: { display: false }, ticks: { font: { size: 10 } } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
